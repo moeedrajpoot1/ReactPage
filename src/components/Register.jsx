@@ -1,6 +1,18 @@
 // import PropTypes from "prop-types"
-
+import axios from "axios"
+import { useState } from "react";
 const Register = ({updateLogin}) => {
+
+  const[userName,setUserName]=useState("")
+  const[password,setPassword]=useState('')
+  const[role,setRole]=useState('')
+  const register=()=>{
+   
+   console.log("User Registered",userName)
+   console.log("User password",password)
+   console.log("User role",role)
+  }
+
   return (
     <section className="rounded-md bg-black/80 p-2">
     <div className="flex items-center justify-center bg-white px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
@@ -19,26 +31,18 @@ const Register = ({updateLogin}) => {
             Sign In
           </a>
         </p>
-        <form  method="POST" className="mt-4">
+        <form method="POST" className="mt-4">
           <div className="space-y-5">
             <div>
               <label htmlFor="name" className="text-base font-medium text-gray-900">
                
-                Full Name
+                User Name
               </label>
               <div className="mt-1">
-                <input   className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" type="text" placeholder="Full Name" id="name" />
+                <input onChange={(e)=>{setUserName(e.target.value)}}  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" type="text" placeholder="Full Name"  id="userName" />
               </div>
             </div>
-            <div>
-              <label htmlFor="email" className="text-base font-medium text-gray-900">
-               
-                Email address
-              </label>
-              <div className="mt-1">
-                <input   className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" type="email" placeholder="Email" id="email" />
-              </div>
-            </div>
+            
             <div>
               <div className="flex items-center justify-between">
                 <label htmlFor="password" className="text-base font-medium text-gray-900">
@@ -46,26 +50,18 @@ const Register = ({updateLogin}) => {
                   Password
                 </label>
               </div>
-              <div className="mt-1">
-                <input     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" type="password" placeholder="Password" id="password" />
+              <div >
+                <input onChange={(e)=>{setPassword(e.target.value)} }   className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" type="password"  placeholder="Password" id="password" />
               </div>
             </div>
             <div className="mb-1">
     <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-    <select className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' onChange={(e)=>setRole(e.target.value)} >
-      <option value="Admin">Admin</option>
-      <option value="User">User</option>
-      <option value="Teacher">Teacher</option>
-    </select>
+    <input onChange={(e)=>{setRole(e.target.value)} }   className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" type="password"  placeholder="role" id="password" />
   </div>
-  <div className="mb-1">
-    <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Profilepicture</label>
-    <input type="file" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required 
-     />
-  </div>
+
   
             <div>
-              <button type="submit" className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80">
+              <button  disabled={!userName ||!password ||!role} onClick={register} className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80 ">
                 Create Account
                 <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="ml-2">
                   <line x1={5} y1={12} x2={19} y2={12} />

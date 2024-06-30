@@ -1,6 +1,14 @@
 // import PropTypes from "prop-types"
-
+import { useState } from "react";
 const Login = ({updateLogin}) => {
+  const[userName,setUserName]=useState("")
+  const[password,setPassword]=useState("")
+  const login=(e)=>{
+    e.preventDefault()
+    
+   console.log("User Registered",userName)
+   console.log("User password",password)
+  }
   return (
     <>
  <section>
@@ -20,15 +28,15 @@ const Login = ({updateLogin}) => {
           Create a free account
         </a>
       </p>
-      <form action="#" method="POST" className="mt-8">
+      <form  method="POST" className="mt-8">
         <div className="space-y-5">
           <div>
             <label htmlFor className="text-base font-medium text-gray-900">
               
-              Email address
+              UserName
             </label>
             <div className="mt-2">
-              <input  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" type="email" placeholder="Email" />
+              <input onChange={(e)=>setUserName(e.target.value)}  className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"  placeholder="Email" />
             </div>
           </div>
           <div>
@@ -43,11 +51,11 @@ const Login = ({updateLogin}) => {
               </a>
             </div>
             <div className="mt-2">
-              <input    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" type="password" placeholder="Password" />
+              <input onChange={(e)=>setPassword(e.target.value)}    className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50" type="password" placeholder="Password" />
             </div>
           </div>
           <div>
-            <button type='submit' className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80">
+            <button onClick={login} className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80">
               Get started
               <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="ml-2">
                 <line x1={5} y1={12} x2={19} y2={12} />

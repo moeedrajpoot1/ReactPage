@@ -1,0 +1,6 @@
+   <p className='text-3xl  text-blue-600,  text-blue-600  mx-5' ><GrTasks /></p>
+     <p className='text-3xl   text-white,  text-white mx-5'> <FaUserCircle /> </p>
+     <p className='text-3xl font-semibold text-red-600 '>
+     import { IoMdLogOut } from "react-icons/io";
+import { FaUserCircle } from "react-icons/fa";
+import { GrTasks } from "react-icons/gr";
