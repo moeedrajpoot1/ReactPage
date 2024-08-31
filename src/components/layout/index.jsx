@@ -8,7 +8,7 @@ const Index = () => {
     <div className=' w-full h-full' >
         <Navbar   setHeader={setHeader}/>
         <Home header={header}/>
-    </div>
+    </div>                                                                                      
   )
 }
 

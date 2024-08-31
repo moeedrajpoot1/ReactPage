@@ -13,7 +13,7 @@ const Home = ({header}) => {
 {header == "Home" && <Landing/>}
 {header == "Profile" && <Profile/>}
 {header == "Tasks" && <Tasks/>}
-    </div></div>
+    </div>hkj</div>
   )
 }
 
